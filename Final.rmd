@@ -153,6 +153,24 @@ The effectiveness for the women are 59.9, with a hi of 65.07 and a low of 54.53 
 
 ## LGBTQ
 
+## LGBTQ graph
+
+```{r}
+dd2 <- gay %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+Looking at this set of graphs, it is very different. You can automatically see that there is a higher chance of those getting covid-19 when using the vaccine. While those who took the placebo are less likely to get infected. The OK side is still looking 50/50.
 
 
 ## Druggies
