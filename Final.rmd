@@ -193,7 +193,7 @@ gaysfish <- fisher.test(table1)
 gaysfish
 ```
 
-Looking at the Fisher's Exact Test for count data, the P value is 1e-08. We can infer that this vaccine isn't as effective for this category of people within the sample. 
+Looking at the Fisher's Exact Test for count data, the P value is 1e-08. We can infer that this vaccine isn't as effective for this category of people within the sample. The confidence interval is 0.082.
 
 ```{r}
 effect <- gaysfish$p.value/(gaysfish$p.value +1)
