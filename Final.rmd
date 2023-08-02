@@ -242,5 +242,32 @@ colPerc(table1)
 
 Looking at the numerical data, we can further see that 88 of those who took the vaccine ended up infected, while 12 of them were those who took the placebo. In other words, majority of those who got infected were the ones who took the vaccine.
 
+## Drug users inferential data
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+drugfish <- fisher.test(table1)
+drugfish
+```
+
+Once again, if we pay attention to the Fisher's Exact Test for count data, we can see its 2e-10.  The 95 percent confidence interval is 0.048. This shows that the vaccine does not work for the group of Drug Users within this data set. 
+
+
+```{r}
+effect <- drugfish$p.value/(drugfish$p.value +1)
+effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)*100
+print(effectivenessdrug)
+```
+
+```{r}
+low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))*100
+hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+The odds ratio is 11, which the exact effectivness for drug users is 11.2. The hi is 21.82 and the low is 4.5.
+
 
 # Overall Results and Conclusions
