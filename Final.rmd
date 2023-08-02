@@ -232,6 +232,15 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 According to the graphical data, we can see that those who took the vaccine ended up getting infected with covid-19 more than those who took the placebo. In the OK portion of the data, there is slightly more of drug users who ended up being OK vs those who took the vaccine. 
 
+## Drug Users numerical data
+
+```{r}
+table1 <- xtabs(~infected + treatment, data= Druguser)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Looking at the numerical data, we can further see that 88 of those who took the vaccine ended up infected, while 12 of them were those who took the placebo. In other words, majority of those who got infected were the ones who took the vaccine.
 
 
 # Overall Results and Conclusions
