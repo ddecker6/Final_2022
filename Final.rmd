@@ -182,7 +182,33 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-Looking at the numerical data, we can see that 15 of those who took the placebo were sick and 50 people were OK after taking the placebo. In the contrary 85 people who took the vaccine ended up getting infected, and 50 people were OK. This is beginning to show this vaccine may not be suitable due to sexuality. 
+Looking at the numerical data, we can see that 15 of those who took the placebo were sick and 50 people were OK after taking the placebo. In the contrary 85 people who took the vaccine ended up getting infected, and 50 people were OK. This is beginning to show this vaccine may not be suitable due to sexuality.
+
+## Inferential LGBTQ
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+gaysfish <- fisher.test(table1)
+gaysfish
+```
+
+Looking at the Fisher's Exact Test for count data, the P value is 1e-08. We can infer that this vaccine isn't as effective for this category of people within the sample. 
+
+```{r}
+effect <- gaysfish$p.value/(gaysfish$p.value +1)
+effectivenessgays = gaysfish$estimate/(gaysfish$estimate +1)*100
+print(effectivenessgays)
+```
+
+```{r}
+low=(gaysfish$conf.int[1]/(gaysfish$conf.int[1] +1))*100
+hi=(gaysfish$conf.int[2]/(gaysfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+The effectiveness is very small, it is 15.4. The hi is 26.5 and a low of 7.60. This is not very effective for the category according to the data we have observed.
+
 
 ## Druggies
 
