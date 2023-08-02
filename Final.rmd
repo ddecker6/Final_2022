@@ -96,6 +96,26 @@ Above is the effectiveness for the covid-19 vaccine for guys(males). If the effe
 
 ## Females
 
+## females graph 
+
+```{r}
+dd2 <- gal %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+In this graph we can see that the females that took the placebo got infected with covid-19 more than those who took the vaccine. In the second category, we see those who were OK, and the bars are about the same.
+
+
 
 ## LGBTQ
 
