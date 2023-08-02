@@ -173,6 +173,17 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 Looking at this set of graphs, it is very different. You can automatically see that there is a higher chance of those getting covid-19 when using the vaccine. While those who took the placebo are less likely to get infected. The OK side is still looking 50/50.
 
 
+## Numerical LGBTQ
+
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=gay)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Looking at the numerical data, we can see that 15 of those who took the placebo were sick and 50 people were OK after taking the placebo. In the contrary 85 people who took the vaccine ended up getting infected, and 50 people were OK. This is beginning to show this vaccine may not be suitable due to sexuality. 
+
 ## Druggies
 
 
