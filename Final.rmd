@@ -252,7 +252,7 @@ drugfish <- fisher.test(table1)
 drugfish
 ```
 
-Once again, if we pay attention to the Fisher's Exact Test for count data, we can see its 2e-10.  The 95 percent confidence interval is 0.048. This shows that the vaccine does not work for the group of Drug Users within this data set. 
+Once again, if we pay attention to the Fisher's Exact Test for count data, we can see its 2e-10.  The 95 percent confidence interval is 0.048. This shows that the vaccine does not work for the group of Drug Users within this data set.  The confidence interval for this subgroup is 0.048.
 
 
 ```{r}
@@ -267,7 +267,7 @@ hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
-The odds ratio is 11, which the exact effectivness for drug users is 11.2. The hi is 21.82 and the low is 4.5.
+The odds ratio is 11, which the exact effectiveness for drug users is 11.2. The hi is 21.82 and the low is 4.5.
 
 
 # Overall Results and Conclusions
