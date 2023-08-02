@@ -212,5 +212,26 @@ The effectiveness is very small, it is 15.4. The hi is 26.5 and a low of 7.60. T
 
 ## Druggies
 
+## Drug User Graph 
+
+
+```{r}
+dd2 <-  Druguser %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+According to the graphical data, we can see that those who took the vaccine ended up getting infected with covid-19 more than those who took the placebo. In the OK portion of the data, there is slightly more of drug users who ended up being OK vs those who took the vaccine. 
+
+
 
 # Overall Results and Conclusions
