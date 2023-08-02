@@ -1,5 +1,5 @@
 ---
-title: "Covid91 vaccine study Final2023"
+title: "Covid-19 vaccine study Final 2023"
 author: "Dorothy Decker"
 output: 
   html_document:
@@ -18,13 +18,80 @@ FinalDat <-read.csv(file="final.csv",header=TRUE)
 FinalData <- FinalDat  %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+guy = filter(FinalData, sex =="M")
+gal = filter(FinalData, sex =="F")
+gay = filter(FinalData, LGBTQ =="gay")
+Druguser = filter(FinalData, DrugUser =="yes")
 ```
+
 
 # Introduction
 
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
 ## Males
+
+## graphical males
+
+
+
+```{r}
+dd2 <- guy %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+In this set of data, we are looking at the subgroup for males. We can see those who ended up infected were those who took the placebo instead of the vaccine. Over 60% of the males that took the placebo ended up infected. Looking at the results of the males who were fine, half of them took the placebo and half took the vaccine. There is a slight higher percentage of those who were okay that took the placebo. So far, it seems like the vaccine is working for males. 
+
+## numerical males 
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=guy)
+rowPerc(table1)
+colPerc(table1)
+```
+In this set of numerical results, we can see the specific numbers of those who were affected. 69% of men that took the placebo got infected, while only 30% of men who took the vaccine got covid19. 
+
+## inferential males
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+guysfish <- fisher.test(table1)
+guysfish
+```
+
+With all of this data, we can put our attention on the Fisher's Exact test. The p-value displayed above is extremely small at 5e-14. This is a really small number, the smaller the number the more it points that the vaccine may have an impact depending on gender.
+
+
+
+The null hypothesis predicted that the deaths related to covid-19 are independent of sex. Since it is clear that sex does play a role in the death rate of individuals, the alternative hypothesis, that there is a correlation between covid-19 deaths and sex, is the more likely option.
+
+
+
+```{r}
+effect <- guysfish$p.value/(guysfish$p.value +1)
+effectivenessguy = guysfish$estimate/(guysfish$estimate +1)*100
+print(effectivenessguy)
+```
+
+```{r}
+low=(guysfish$conf.int[1]/(guysfish$conf.int[1] +1))*100
+hi=(guysfish$conf.int[2]/(guysfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+
+Above is the effectiveness for the covid-19 vaccine for guys(males). If the effectiveness is above 50% that means that the vaccine is effective. We can see that it is as 69%. Which means it is effective for men.
 
 
 ## Females
