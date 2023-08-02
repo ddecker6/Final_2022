@@ -70,7 +70,7 @@ guysfish <- fisher.test(table1)
 guysfish
 ```
 
-With all of this data, we can put our attention on the Fisher's Exact test. The p-value displayed above is extremely small at 5e-14. This is a really small number, the smaller the number the more it points that the vaccine may have an impact depending on gender. The 95 percent confident interval is 1.8. 
+With all of this data, we can put our attention on the Fisher's Exact test. The p-value displayed above is extremely small at 5e-14. This is a really small number, the smaller the number the more it points that the vaccine may have an impact depending on gender. The 95 percent confidence interval is 1.8. 
 
 
 
@@ -134,7 +134,7 @@ galsfish <- fisher.test(table1)
 galsfish
 ```
 
-With all of this data, we can put our attention on the Fisher's Exact test. The p-value displayed above is small at 2e-04. This is a really small number, the smaller the number the more it points that the vaccine may have an impact depending on gender.
+With all of this data, we can put our attention on the Fisher's Exact test. The p-value displayed above is small at 2e-04. This is a really small number, the smaller the number the more it points that the vaccine may have an impact depending on gender. The confidence interval is 1.2.
 
 
 ```{r}
