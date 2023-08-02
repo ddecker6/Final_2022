@@ -91,7 +91,7 @@ options(digits=2)
 ```
 
 
-Above is the effectiveness for the covid-19 vaccine for guys(males). If the effectiveness is above 50% that means that the vaccine is effective. We can see that it is as 69%. Which means it is effective for men.
+Above is the effectiveness for the covid-19 vaccine for guys(males). If the effectiveness is above 50% that means that the vaccine is effective. We can see that it is as 69%. Which means it is effective for men.  The effectiveness confidence interval for the guys is 69.2, with a hi of 73.75 and a low of 64.26
 
 
 ## Females
@@ -124,6 +124,32 @@ colPerc(table1)
 ```
 
 Looking at the numerical data, we can see that 60 of those who took the placebo got infected and only 40 who took the vaccine ended up getting covid-19. For the OK category, it was 50/50.
+
+## females inferential
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+galsfish <- fisher.test(table1)
+galsfish
+```
+
+With all of this data, we can put our attention on the Fisher's Exact test. The p-value displayed above is small at 2e-04. This is a really small number, the smaller the number the more it points that the vaccine may have an impact depending on gender.
+
+
+```{r}
+effect <- galsfish$p.value/(galsfish$p.value +1)
+effectivenessgal = galsfish$estimate/(galsfish$estimate +1)*100
+print(effectivenessgal)
+```
+
+```{r}
+low=(galsfish$conf.int[1]/(galsfish$conf.int[1] +1))*100
+hi=(galsfish$conf.int[2]/(galsfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+The effectiveness for the women are 59.9, with a hi of 65.07 and a low of 54.53 This is showing it is helping the females. 
 
 ## LGBTQ
 
