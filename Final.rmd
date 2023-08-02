@@ -271,3 +271,15 @@ The odds ratio is 11, which the exact effectiveness for drug users is 11.2. The 
 
 
 # Overall Results and Conclusions
+
+In conclusion, with all the data we have viewed, I can conclude that the vaccine does not work for everyone. Given the nature of this vaccine it was  suspected that the drug may exhibit different effectiveness across the variety of sub-populations tracked. Considering population subgroups by gender( guys and gals), drug use, and sexual orientation, I was able to find that within the guys and gals subgroups it was effective. With this said, it was more effective for males than it was for females. The odds ratio was higher for males at 69, when it was only 60 for women. The vaccine was effective for both genders, but simply put, it worked better for men. Now, with the LGBTQ group it was not effective. There were higher cases of those infected when taking the vaccine vs those who took the placebo. Same goes for the Drug User category, there were also higher cases of those infected for those who took the vaccine. The odds ratios were both very low in comparison to female and male subgroups. 
+
+Looking at all the numerical data and comparing each category, it is evident that the vaccine was not effective for every subgroup. For example, The 95 percent confidence interval for guys and gals was above one, while for drug users and the LGBTQ had numbers under 1.
+
+So, if you are a drug user or in the LGBTQ category I would advise against using this vaccine. And if you are a man, you have a better chance at not getting infected than women do. Women: it is effective just not as effective. 
+
+So overall, The null that there is no difference in taking the vaccine can be accepted to the categories including drug users and gay individuals. the alternative, that the vaccine works and is effective, can be accepted for the gals(women,) and guys(men).
+
+
+
+
