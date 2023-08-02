@@ -115,7 +115,15 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 In this graph we can see that the females that took the placebo got infected with covid-19 more than those who took the vaccine. In the second category, we see those who were OK, and the bars are about the same.
 
+## females numerical
 
+```{r}
+table1 <- xtabs(~infected + treatment, data=gal)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Looking at the numerical data, we can see that 60 of those who took the placebo got infected and only 40 who took the vaccine ended up getting covid-19. For the OK category, it was 50/50.
 
 ## LGBTQ
 
